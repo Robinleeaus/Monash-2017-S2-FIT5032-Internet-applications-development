@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="articleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="date" Type="date" />
+    <Property Name="category" Type="nvarchar" MaxLength="50" />
+    <Property Name="journalistId" Type="int" />
+  </EntityType>
+  <EntityType Name="Journalists">
+    <Key>
+      <PropertyRef Name="journalistId" />
+    </Key>
+    <Property Name="journalistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Articles_Journalists">
+    <End Role="Journalists" Type="Self.Journalists" Multiplicity="0..1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Journalists">
+        <PropertyRef Name="journalistId" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="journalistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewsModelStoreContainer">
+    <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Journalists" EntityType="Self.Journalists" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Articles_Journalists" Association="Self.FK_Articles_Journalists">
+      <End Role="Journalists" EntitySet="Journalists" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

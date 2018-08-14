@@ -1,0 +1,46 @@
+﻿@model IEnumerable<News_D_V1.Models.Article>
+@Scripts.Render("~/scripts/myScript-datatable.js")
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/Img/news-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>News</h1>
+                    <span class="subheading">For all visitors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container body-content">
+
+    @foreach (var item in Model)
+    {
+        <p>
+            <hr />
+            <h2>
+                @Html.ActionLink(@Html.DisplayFor(modelItem => item.title).ToString(), "NewsDetails", new { id = item.articleId }, new { @style = "color:deepskyblue" })
+            </h2>
+            @Html.DisplayFor(modelItem => item.contentInitial)
+        </p>
+        <p>
+            <div>By @Html.DisplayFor(modelItem => item.Journalist.name)</div>
+            <div>@Html.DisplayFor(modelItem => item.date)</div>
+            <div>Category: @Html.DisplayFor(modelItem => item.category)</div>
+        </p>
+        @*<p>
+            @Html.ActionLink("Details", "NewsDetails", new { id = item.articleId })
+        </p>*@
+    }
+
+</div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<News_D_V1.Models.Article>
+@Scripts.Render("~/scripts/myScript-datatable.js")
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('Img/articles-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Articles</h1>
+                    <span class="subheading">Administration view</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container body-content">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-striped table-bordered" id="dataArticle">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Journalist.name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.title)</th>
+                <th>@Html.DisplayNameFor(model => model.content)</th>
+                <th>@Html.DisplayNameFor(model => model.date)</th>
+                <th>@Html.DisplayNameFor(model => model.category)</th>
+                <th>@Html.DisplayNameFor(model => model.Journalist.name)</th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contentInitial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Journalist.name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.articleId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.articleId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.articleId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>

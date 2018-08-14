@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - MONASH NEWS</title>
+    @Styles.Render("~/Content/css")
+
+    <!--CSS-->
+    <!--bootstrap template-->
+    <!-- Bootstrap core CSS v4.0.0-beta-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font_custom_1.css" rel='stylesheet' type='text/css'>
+    <link href="~/Content/font_custom_2.css" rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="~/Content/clean-blog.min.css" rel="stylesheet">
+
+    <!--jquery-ui v1.12.1-->
+    <link href="~/Content/jquery-ui.css" rel="stylesheet">
+
+    <!--jquery-datatable V1.10.16-->
+    <link href="~/Content/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!--JavaScript-->
+
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/respond.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- jQuery v3.2.1 -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <!-- Bootstrap v4.0.0-beta -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="~/Scripts/clean-blog.min.js"></script>
+
+    <!--jquery-ui v1.12.1-->
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <!--jquery-datatable V1.10.16-->
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap4.js"></script>
+
+    <script src="~/Scripts/jquery.validate.date.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <!--bootstrap template-->
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            @Html.ActionLink("MONASH NEWS", "Index", "Home", null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("News", "News", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    @*<li class="nav-item">*@
+                    <li class="nav-item" style="position:relative; display:inline-block">
+                        <a href="#" class="nav-link" data-toggle="dropdown">Administration</a>
+                        @*<ul class="dropdown-menu">*@
+                        <ul class="dropdown-menu" style="position:absolute">
+                            <li class="nav-item">@Html.ActionLink("Articles", "Index", "Articles", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Journalists", "Index", "Journalists", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Members", "Index", "AspNetUsers", null, new { @class = "nav-link" })</li>
+                            @*<li class="nav-item">@Html.ActionLink("Send Email", "Contact", "Home", null, new { @class = "nav-link" })</li>*@
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Documentation", "Documentation", "Home", null, new { @class = "nav-link" })
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    @*<header class="masthead" style="background-image: url('Img/home-bg.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>Monash News</h1>
+                            <span class="subheading">Monash news is a news website for getting the lateset news.</span>
+                            <p>
+                                @Html.ActionLink("Start browsing", "Index", "Articles", null, new { @class = "btn btn-primary btn-lg" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>*@
+
+    @*<div class="container body-content">*@
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MONASH NEWS</p>
+        </footer>
+    </div>
+
+
+
+</body>
+</html>

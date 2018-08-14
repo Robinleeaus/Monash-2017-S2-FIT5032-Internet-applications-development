@@ -1,0 +1,40 @@
+﻿@model News_D_V1.Models.Article
+
+@{
+    ViewBag.Title = "News Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/Img/newsdetails-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>News Details</h1>
+                    <span class="subheading">For all visitors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container body-content">
+    <h2>@Html.DisplayFor(model => model.title)</h2>
+    <p>
+        <div>By @Html.DisplayFor(model => model.Journalist.name)</div>
+        <div>@Html.DisplayFor(model => model.date)</div>
+        <div>Category: @Html.DisplayFor(model => model.category)</div>
+    </p>
+    <hr />
+    <p>
+        @Html.DisplayFor(model => model.content)
+    </p>
+    <p>
+        @Html.ActionLink("Back to News", "News")
+    </p>
+</div>
+
